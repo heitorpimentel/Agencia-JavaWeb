@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HP Viagens</title>
+    <link rel="shortcut icon" href="imagens/icone-logo.ico" type="image/x-icon"> <!-- icone -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="estilos/style.css"> <!-- css local -->
+</head>
+
+<body>
+    <!-- início da navbar -->    
+    <nav id="naveg" class="navbar navbar-expand-md navbar-dark p-0 sticky-top">
+        <div class="container">
+          <a class="navbar-brand pl-2" href="#"><div class="imagem-nav"><img src="imagens/imagem-logo.jpg" alt="Imagem da Logo da página na barra de navegação" style="width: 130px; height: 60px;"></div></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse flex-wrap justify-content-center" id="navbarNavAltMarkup">
+              <div class="navbar-nav text-center">
+                  <a class="nav-item nav-link active" href="index.html" title="Vôos"><span class="material-symbols-rounded fundo-icon">flight_takeoff</span><br>Vôos</a>
+                  <a class="nav-item nav-link" href="hotel/hoteis.html" title="Hoteis"><span class="material-symbols-rounded fundo-icon">luggage</span><br>Hotéis</a>
+                  <a class="nav-item nav-link" href="onibus/onibus.html" title="Promoções"><span class="material-symbols-rounded fundo-icon">directions_bus</span><br>Ônibus</a>
+                  <a class="nav-item nav-link" href="promo/promocoes.html" title="Promoções"><span class="material-symbols-rounded fundo-icon">sell</span><br>Promoções</a>
+                  <a class="nav-item nav-link" href="contato/contato.html" title="Fale conosco"><span class="material-symbols-rounded fundo-icon">contact_support</span><br>Contato</a>
+                  <ul class=" nav justify-content-center">
+                    <li class="nav-item dropdown text-center">
+                      <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Entre ou Cadastre-se"><span class="material-symbols-rounded fundo-icon">account_circle
+                      </span><br> Login</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="./user/login.html">Entrar</a>
+                        <a class="dropdown-item" href="./user/cadastro.html">Cadastre-se</a>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+          </div>
+        </div>
+    </nav>    
+    <!-- Fim da navbar -->
+    <main>
+        <section class="topo-voo">            
+            <div class="voo">
+              <div class="buscas">
+                  <h3 class="titulo-formulario">
+                     Vôos
+                  </h3>
+                  <form action="buscas/busca-cards.html" method="post">
+                      <div class="container">
+                          <script src="scripts/funcoes.js"></script>
+                          <div class="custom-control custom-radio custom-control-inline pl-5 pb-3">
+                            <input type="radio" id="idaVolta" name="inputData" class="custom-control-input" checked onclick="esconderData()">
+                            <label class="custom-control-label" for="idaVolta">Ida e Volta</label>
+                          </div>
+                          <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="soIda" name="inputData" class="custom-control-input" onclick="esconderData()">
+                            <label class="custom-control-label" for="soIda">Somente Ida</label>
+                          </div>
+                          <div class="container flex-wrap">
+                              <div id="datas-select" class=" col-sm-12 ">
+                                  <div class="col">
+                                      <div class="row" id="label-origem"><label for="trecho-de-ida"><span class="material-symbols-rounded fundo-icon">flight_takeoff</span> Origem</label></div>
+                                      <div class="row"><input class="form-control" type="text" id="trecho-de-ida" list="lista-lugares" placeholder="Busque por aeroporto" required></div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="row" id="label-destino"><label for="trecho-de-volta"><span class="material-symbols-rounded fundo-icon">flight_land</span> Destino</label></div>
+                                    <div class="row"><input class="form-control" type="text" id="trecho-de-volta" list="lista-lugares" placeholder="Busque por aeroporto" required></div>
+                                  </div>
+              
+                                  <!-- Datas inicio -->
+                                  <div class="col">
+                                    <div class="row"><label for="trecho-de-ida"><span class="material-symbols-rounded fundo-icon">calendar_month</span> Ida</label></div>
+                                    <div class="row"><input class="form-control" type="date" aria-label="Ida" id="data-ida" required></div>
+                                </div>
+                                <div class="col" id="dataDeVolta">
+                                  <div class="row"><label for="trecho-de-ida"><span class="material-symbols-rounded fundo-icon">calendar_month</span> Volta</label></div>
+                                  <div class="row"><input class="form-control" type="date" aria-label="Volta" id="data-volta"></div>
+                                </div>
+                                <!-- Datas fim -->
+                              </div>
+                              <!-- Selecione quantidade inicio-->
+                              <div class="ml-3">
+                                <label class="my-1 mr-2" for="inlineFormCustomSelectPref"><span class="material-symbols-rounded fundo-icon">diversity_3</span>Passageiros</label>
+                                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" style="width: 100px;" required>
+                                    <option selected>Escolha</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
+                              </div>
+                              <!-- Selecione quantidade fim -->
+                              <!-- Botão busca -->
+                              <div class="custom-control custom-checkbox my-1 ml-3">
+                                  <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                  <label class="custom-control-label" for="customControlInline">Bebê a bordo</label>
+                                  <div class="botao-busca"><button type="submit" class="btn btn-lg my-1">Buscar</button></div>
+                              </div>
+                              <!-- Fim botao busca -->
+                          </div>
+                      </div>
+                      <datalist id="lista-lugares">
+                          <option value="REC">Recife (REC)</option>
+                          <option value="NAT">Natal (NAT)</option>
+                          <option value="SAO">São Paulo - Todos os Aeroportos (SAO)</option>
+                          <option value="RIO">Rio de Janeiro - Todos os Aeroportos (RIO)</option>
+                      </datalist>
+                  </form>
+              
+              </div>
+            </div>
+        </section>
+        <section class="slides"> <!-- início dos slides -->
+          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">              
+              <div class="carousel-item active">
+                <img src="imagens/imagens-aviao/imagem-slide01-voo.jpg" alt="Imagem de uma praia em Natal RN">
+                <div class="carousel-caption d-none d-md-block text-left">
+                  <h2 class="item-slide my-5">Conheça o Nordeste</h2>
+                  <p class="item-slide">Aproveite para conhecer Natal com um super desconto!</p>
+                  <p class="col item-slide">
+                    <small class="row preco-antigo-slide"><del>R$ 1.000,00</del></small>
+                    <strong class="row preco-novo-slide">R$ 800,00</strong>
+                  </p>                            
+                  <a class="btn btn-lg row m-auto w-100 item-slide" href="buscas/busca-cards.html" role="button"><button class="btn" type="button">Aproveite agora mesmo</button></a>
+                </div>                
+              </div>
+              <div class="carousel-item">
+                <img src="imagens/imagens-aviao/imagem-slide02-voo.jpg" alt="Imagem de uma praia em João Pessoa PB">
+                <div class="carousel-caption d-none d-md-block text-left">
+                  <h2 class="item-slide my-5">Conheça o Nordeste</h2>
+                  <p class="item-slide">Aproveite para conhecer João Pessoa com um super desconto!</p>
+                  <p class="col item-slide">
+                    <small class="row preco-antigo-slide"><del>R$ 1.000,00</del></small>
+                    <strong class="row preco-novo-slide">R$ 800,00</strong>
+                  </p>
+                  <a class="btn btn-lg row m-auto w-100 item-slide" href="buscas/busca-cards.html" role="button"><button class="btn" type="button">Aproveite agora mesmo</button></a>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="imagens/imagens-aviao/imagem-slide03-voo.jpg" alt="Imagem de uma pessoa pousando de para-quedas em uma praia">
+                <div class="carousel-caption d-none d-md-block text-left">
+                  <h2 class="item-slide my-5">Conheça o Nordeste</h2>
+                  <p class="item-slide">Conheça as melhores praias do Nordeste e curta as férias</p>
+                  <p class="col item-slide">
+                    <small class="row preco-antigo-slide"><del>R$ 1.000,00</del></small>
+                    <strong class="row preco-novo-slide">R$ 800,00</strong>
+                  </p>
+                  <a class="btn btn-lg row m-auto w-100 item-slide" href="buscas/busca-cards.html" role="button"><button class="btn" type="button">Aproveite agora mesmo</button></a>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Próximo</span>
+            </a>
+          </div>
+        </section> <!-- Fim dos slides -->
+        <section class="position-cards">
+            <section class="fundo-pos-slide-voo"> 
+                <div class="d-md-none promo-slide container-fluid card" >                        
+                  <div class="card-body">
+                      <h3 class="text-center">Não fique de fora dessa!</h5>
+                      <p class="card-text text-center">Consulte as melhores promoções!</p>
+                      <p class="col">
+                          <span class="row">A partir de: </span>
+                          <strong class="row">R$ 800,00</strong>
+                      </p>                            
+                      <a href="promo/promocoes.html" class="btn container botao-busca"><button class="btn btn-sm container" type="button">Principais promoções</button></a>
+                  </div>
+                </div>               
+
+                <div class="titulo-mensagem-card">
+                    <h3>As melhores ofertas de Vôos</h3>
+                </div>
+                <!-- Início dos cards -->
+                <section class="cartoes col-md-12 py-5">
+                
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-img-top"><img src="imagens/imagens-aviao/img-card-01-voo.jpg" alt="Imagem de capa do card"></div>
+                        <div class="card-body">
+                          <h5 class="card-title">Vôos para Natal/RN</h5>
+                          <p class="card-text">As praias potiguares são maravilhosas e você não poderia perder essa chance de relaxar e aproveitar nesse sol potiguar! </p>
+                          <p class="col">
+                            <small class="row preco-antigo"><del>R$ 1.000,00</del></small>
+                            <strong class="row preco-novo">R$ 800,00</strong>
+                          </p>
+                          <a href="buscas/busca-cards.html" class="btn botao-busca"><button class="btn" type="button">Aproveite já</button></a>
+                        </div>
+                      </div>
+                      <div class="card" style="width: 18rem;">
+                        <div class="card-img-top"><img src="imagens/imagens-aviao/img-card-02-voo.jpg" alt="Imagem de capa do card"></div>
+                        <div class="card-body">
+                          <h5 class="card-title">Vôos para João Pessoa/PB</h5>
+                          <p class="card-text">A Paraíba espera você! Venha conhecer onde o sol nasce primeiro no Nordeste.</p>
+                          <p class="col">
+                            <small class="row preco-antigo"><del>R$ 1.000,00</del></small>
+                            <strong class="row preco-novo">R$ 800,00</strong>
+                          </p>
+                          <a href="buscas/busca-cards.html" class="btn botao-busca"><button class="btn" type="button">Aproveite já</button></a>
+                        </div>
+                      </div>
+                      <div class="card" style="width: 18rem;">
+                        <div class="card-img-top"><img src="imagens/imagens-aviao/img-card-03-voo.jpg" alt="Imagem de capa do card"></div>
+                        <div class="card-body">
+                          <h5 class="card-title">Vôos para Recife/PE</h5>
+                          <p class="card-text">Recife te espera de braços abertos. O que está esperando para aproveitar essa mega oferta?</p>
+                          <p class="col">
+                            <small class="row preco-antigo"><del>R$ 1.000,00</del></small>
+                            <strong class="row preco-novo">R$ 800,00</strong>
+                          </p>
+                          <a href="buscas/busca-cards.html" class="btn botao-busca"><button class="btn" type="button">Aproveite já</button></a>
+                        </div>
+                      </div>
+                      <div class="card" style="width: 18rem;">
+                        <div class="card-img-top"><img src="imagens/imagens-aviao/img-card-04-voo.jpg" alt="Imagem de capa do card"></div>
+                        <div class="card-body">
+                          <h5 class="card-title">Vôos para Fernando de Noronha/PE</h5>
+                          <p class="card-text">Aproveite esse super desconto e venha conhecer esse caribe brasileiro.</p>
+                          <p class="col">
+                            <small class="row preco-antigo"><del>R$ 1.000,00</del></small>
+                            <strong class="row preco-novo">R$ 800,00</strong>
+                          </p>
+                          <a href="buscas/busca-cards.html" class="btn botao-busca"><button class="btn" type="button">Aproveite já</button></a>
+                        </div>
+                      </div>
+                      <div class="card" style="width: 18rem;">
+                        <div class="card-img-top"><img src="imagens/imagens-aviao/img-card-05-voo.jpg" alt="Imagem de capa do card"></div>
+                        <div class="card-body">
+                            <h5 class="card-title">Vôos para Fortaleza/CE</h5>
+                          <p class="card-text pb-4">Encontre as melhores ofertas para São Paulo com descontos que você só encontra aqui!</p>
+                          <p class="col">
+                            <small class="row preco-antigo"><del>R$ 1.000,00</del></small>
+                            <strong class="row preco-novo">R$ 800,00</strong>
+                          </p>
+                          <div><a href="buscas/busca-cards.html" class="btn botao-busca"><button class="btn" type="button">Aproveite já</button></a></div>
+                        </div>
+                    </div>
+                
+                      <div class="card" style="width: 18rem;">
+                        <div class="card-img-top"><img src="imagens/imagens-aviao/img-card-06-voo.jpg" alt="Imagem de capa do card"></div>
+                        <div class="card-body">
+                          <h5 class="card-title">Vôos para Maceió/AL</h5>
+                          <p class="card-text">Encontre as melhores ofertas para o Rio de Janeiro com descontos que você só encontra aqui!</p>
+                          <p class="col">
+                            <small class="row preco-antigo"><del>R$ 1.000,00</del></small>
+                            <strong class="row preco-novo">R$ 800,00</strong>
+                          </p>
+                          <a href="buscas/busca-cards.html" class="btn botao-busca"><button class="btn" type="button">Aproveite já</button></a>
+                        </div>
+                    </div>
+                
+                </section> <!-- Fim dos cards -->
+            </section>
+        </section>
+    </main>
+    <!-- Início do Rodapé -->        
+    <footer class="py-3">
+          <div class="container">
+              <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                  <h5>Fale conosco</h5>
+                  <hr class="border-top">
+                  <ul class="nav flex-column">
+                    <li class="nav-item nav-item-footer mb-2"><a href="contato/contato.html" class="nav-item-footer p-0">Nossos números</a></li>
+                    <li class="nav-item mb-2"><a href="contato/contato.html" class="nav-item-footer p-0">Nosso email</a></li>
+                    <li class="nav-item mb-2"><a href="contato/contato.html" class="nav-item-footer p-0">Nosso Endereço</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-3">
+                  <h5>Promoções</h5>
+                  <hr class="border-top">
+                  <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="promo/promocoes.html" class="nav-item-footer p-0">Promoções Vôos</a></li>
+                    <li class="nav-item mb-2"><a href="promo/promocoes.html" class="nav-item-footer p-0">Promoções Hotéis</a></li>
+                    <li class="nav-item mb-2"><a href="promo/promocoes.html" class="nav-item-footer p-0">Promoções Ônibus</a></li>
+                    <li class="nav-item mb-2"><a href="promo/promocoes.html" class="nav-item-footer p-0">Pacotes</a></li>                    
+                  </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-3">
+                  <h5>Sobre</h5>
+                  <hr class="border-top">
+                  <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="contato/contato.html" class="nav-item-footer p-0">Quem somos</a></li>
+                    <li class="nav-item mb-2"><a href="contato/contato.html" class="nav-item-footer p-0">Perguntas frequentes</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-5 offset-md-1 mb-3">
+                  <form>
+                    <h5>Receba as novidades</h5>
+                    <hr class="py-3 border-top">
+                    <p>As melhores promoções no seu email</p>
+                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                      
+                      <input id="newsletter1" type="email" class="form-control" placeholder="Digite seu email">
+                      <button class="btn btn-secondary btn-sm" type="button" data-toggle="modal" data-target="#modalExemplo">Se inscrever</button>
+                      <!-- Modal -->
+                        <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title text-modal" id="exampleModalLabel">Parabéns!!</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <p class=" text-modal">Agora você irá receber as melhores promoções e aproveitar a viagem com os melhores descontos!</p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                          <!-- Fim Modal -->
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="d-flex flex-column flex-sm-row justify-content-between py-1 my-4 border-top">
+                <p class="frase-rodape">© 2023 Desenvolvido por <strong>Heitor Pimentel</strong></p>                
+              </div>
+          </div>
+    </footer>
+</body>
+
+</html>
