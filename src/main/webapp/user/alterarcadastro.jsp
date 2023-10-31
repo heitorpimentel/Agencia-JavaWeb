@@ -19,9 +19,9 @@
 </head>
 <body>
 	<div class="container py-2">
-		<h5>Alteração do cliente ${cliente.nome}</h5>
+		<h5 class="py-3">Alteração do cliente ${cliente.nome}</h5>
 		
-		<form action="editar" method="post" class="form-control">
+		<form action="editar" method="post" class="form-control bg-light">
 			<fieldset>
 				<legend>Dados do Cliente</legend>
 				<input type="hidden" name="id_cliente" value="${cliente.id_cliente}">
@@ -85,14 +85,11 @@
 								senha</label>
 						</div>
 					</div>
-					<div class="row col-md-12 form-group">
-						
-						<div class="form-group">
-							<label for="inputTel">Telefone</label> <input type="text"
-								class="form-control" id="inputTel" name="telefone" placeholder="(xx) xxxxx-xxxx"
-								onkeyup="formataTEL(event)" minlength="14" maxlength="15"
-								value="${cliente.telefone}" required>
-						</div>
+					<div class="form-group col-md-12">
+						<label for="inputTel">Telefone</label> <input type="text"
+							class="form-control" id="inputTel" name="telefone" placeholder="(xx) xxxxx-xxxx"
+							onkeyup="formataTEL(event)" minlength="14" maxlength="15"
+							value="${cliente.telefone}" required>
 					</div>
 					<div class=" py-2">
 						<input type="submit" value="Atualizar Cliente"

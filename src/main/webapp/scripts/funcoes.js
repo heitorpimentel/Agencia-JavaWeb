@@ -51,3 +51,25 @@ function esconderData(){
     value = value.replace(/(\d)(\d{4})$/, "$1-$2");
     return value;
     };
+    
+    /*const input_busca = document.getElementById('searchInput')
+    const tabela_nome = document.getElementById('tabela-nome')
+    
+    input_busca.addEventListener('keyup', () => {
+		let expressao = input_busca.value.toLowerCase();
+		let linhas = tabelas_nome.getElementByTagName('tr');
+		
+		for(let posicao in linhas){
+			if(true === isNaN(posicao)){
+				continue;
+			}
+			let conteudoLinha = linhas[posicao].innerHTML.toLowerCase();
+			if(true === conteudoLinha.includes(expressao)){
+				linhas[posicao].style.display = ''
+			} else {
+				linhas[posicao].style.display = 'none'
+			}
+		}
+	})*/
+    
+    

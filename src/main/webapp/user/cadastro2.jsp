@@ -19,7 +19,9 @@
 	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 	crossorigin="anonymous"></script>
 <script src="../scripts/funcoes.js"></script>
-
+<style>
+	@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg bg-light sticky-top navbar-dark bg-dark">
@@ -46,9 +48,9 @@
 		</div>
 	</nav>
 	<div class="container">
-		<h3>Cadastro de cliente</h3>
-	
-		<form action="SalvarCliente" method="post" class="form-control">
+		<h3 class="py-3">Cadastro de cliente</h3>
+		
+		<form action="SalvarCliente" method="post" class="form-control bg-light">
 			<fieldset>
 				<legend>Dados do Cliente</legend>
 				<div class="form-row">
@@ -98,14 +100,14 @@
 							name="senha" class="form-control" id="inputSenha"
 							placeholder="Mínimo 8 caracteres" pattern=".{8,}"
 							title="Oito ou mais caracteres" required>
-						<div class="col-md-6">
-							<input class="col-1 form-check-input" type="checkbox"
+						<div class="">
+							<input class=" form-check-input" type="checkbox"
 								id="verSenha" onclick="mostrarSenha()"> <label
 								class="col form-check-label" for="verSenha">Mostrar
 								senha</label>
 						</div>
 					</div>
-					<div class="row col-md-12 form-group py-2">
+					<div class="col-md-12 form-group py-2">
 						
 						<div class="form-group">
 							<label for="inputTel">Telefone</label> <input type="text"
@@ -126,10 +128,10 @@
 
 		<br>
 		<h5>Clientes cadastrados</h5>
-
+		
 		<div class="table-responsive mb-3">
-			<table class="table">
-				<thead>
+			<table class="table table-striped">
+				<thead class="table-dark">
 					<tr>
 						<th>#</th>
 						<th>Nome</th>
@@ -141,7 +143,8 @@
 						<th>Ações</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="tabela-nome">
+					
 					<jstl:forEach items="${listaClientes}" var="cliente">
 						<tr>
 							<td>${cliente.id_cliente}</td>
@@ -151,9 +154,9 @@
 							<td>${cliente.sexo}</td>
 							<td>${cliente.email}</td>
 							<td>${cliente.telefone}</td>
-							<td><a href="editar?id_cliente=${cliente.id_cliente}" class="btn btn-warning">Editar</a>
+							<td><a href="editar?id_cliente=${cliente.id_cliente}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
 								<a href="excluir?id_cliente=${cliente.id_cliente}"	onclick="return confirm('Deseja Excluir?')"
-								class="btn btn-danger">Excluir</a>
+								class="btn btn-danger"><i class="bi bi-trash"></i></a>
 							</td>
 						</tr>
 					</jstl:forEach>
